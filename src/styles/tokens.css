@@ -1,0 +1,281 @@
+/* ═══════════════════════════════════════════
+   DESIGN TOKENS — Privacy-First Tool Kit
+   Copy this file into every tool project.
+   Only change --accent-* for each tool's color.
+   ═══════════════════════════════════════════ */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,650,700&display=swap");
+
+:root {
+  /* backgrounds */
+  --bg-page: #fffbf7;
+  --bg-surface: #ffffff;
+  --bg-input: #fbf8f4;
+  --bg-hover: #f5f1eb;
+
+  /* text */
+  --text-primary: #2d2824;
+  --text-secondary: #78716c;
+  --text-muted: #b0a99f;
+  --text-placeholder: #cec6bc;
+
+  /* accent — CHANGE THESE PER TOOL */
+  --accent: #e8a830;
+  --accent-soft: rgba(242, 113, 77, 0.08);
+  --accent-border: rgba(242, 113, 77, 0.2);
+  --accent-glow: rgba(242, 113, 77, 0.12);
+
+  /* trust — never changes */
+  --trust-text: #3d8c5c;
+  --trust-bg: rgba(61, 140, 92, 0.05);
+  --trust-border: rgba(61, 140, 92, 0.12);
+  --trust-dot: #4ade80;
+
+  /* danger */
+  --danger-text: #d94f4f;
+  --danger-bg: rgba(217, 79, 79, 0.06);
+
+  /* borders */
+  --border-light: rgba(0, 0, 0, 0.05);
+  --border-medium: rgba(0, 0, 0, 0.09);
+
+  /* radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
+  --radius-full: 9999px;
+
+  /* fonts */
+  --font-body: "General Sans", -apple-system, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", monospace;
+
+  /* shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-body);
+  background: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Trust Bar ── */
+.trust-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--trust-bg);
+  border-bottom: 1px solid var(--trust-border);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--trust-text);
+}
+
+.trust-bar .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--trust-dot);
+  flex-shrink: 0;
+}
+
+.trust-bar a {
+  color: var(--trust-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  opacity: 0.7;
+  font-size: 11px;
+}
+
+.trust-bar .sep {
+  color: var(--text-muted);
+}
+
+/* ── Header ── */
+.tool-header {
+  padding: 28px 0 20px;
+  text-align: center;
+}
+
+.tool-header h1 {
+  font-family: var(--font-body);
+  font-weight: 660;
+  font-size: 25px;
+  color: var(--text-primary);
+  letter-spacing: -0.4px;
+  margin-bottom: 5px;
+}
+
+.tool-header p {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ── Tool Area ── */
+.tool-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .tool-area {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Text Input ── */
+.tool-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.tool-textarea {
+  width: 100%;
+  min-height: 180px;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.65;
+  outline: none;
+  resize: vertical;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tool-textarea::placeholder {
+  color: var(--text-placeholder);
+}
+
+.tool-textarea:focus {
+  border-color: var(--accent-border);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.tool-textarea.output-valid {
+  background: var(--accent-soft);
+}
+
+/* ── Buttons ── */
+.btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  font-weight: 560;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid var(--border-light);
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn:hover {
+  background: var(--bg-hover);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 8px var(--accent-glow);
+}
+
+.btn-primary:hover {
+  filter: brightness(1.06);
+}
+
+/* ── Controls Row ── */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.controls .spacer {
+  margin-left: auto;
+}
+
+/* ── Status Pill ── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.pill .pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.pill-ok {
+  background: var(--trust-bg);
+  color: var(--trust-text);
+}
+
+.pill-err {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+/* ── Footer ── */
+.tool-footer {
+  padding: 20px 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-light);
+  margin-top: 24px;
+}
+
+.tool-footer a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Page Shell ── */
+.page-shell {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
