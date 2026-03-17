@@ -272,7 +272,7 @@
   let totalGps = $derived(files.filter((f) => f.hasGps).length);
 </script>
 
-<TrustBar sourceUrl="https://github.com/user/localexif" />
+<TrustBar sourceUrl="https://github.com/Griffin2/localexif" />
 
 <div class="page-shell">
   <ToolHeader
